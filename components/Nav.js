@@ -63,10 +63,10 @@ export default function Nav() {
           display: flex;
           align-items: center;
           gap: 10px;
-          font-family: var(--font-display);
-          font-weight: 600;
-          font-size: 18px;
-          letter-spacing: 0.01em;
+          font-family: var(--font-serif);
+          font-weight: 300;
+          font-size: 21px;
+          letter-spacing: 0.03em;
         }
         .nav-mark {
           border-radius: 6px;

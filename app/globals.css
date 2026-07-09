@@ -1,24 +1,27 @@
 :root {
-  --navy-950: #070f22;
-  --navy-900: #0b1732;
-  --navy-800: #101f40;
-  --navy-700: #172a52;
-  --navy-600: #223862;
+  --navy-950: #08111a;
+  --navy-900: #0d1b2a;
+  --navy-800: #112235;
+  --navy-700: rgba(201, 168, 76, 0.22);
+  --navy-600: rgba(201, 168, 76, 0.35);
 
-  --blue: #38aecd;
-  --purple: #8263b7;
-  --teal: #35ab72;
-  --green: #1fbd5c;
+  --blue: #c9a84c;
+  --purple: #e8622a;
+  --teal: #c9a84c;
+  --green: #e8622a;
+  --gold: #c9a84c;
+  --orange: #e8622a;
 
-  --ink-100: #f3f6fb;
-  --ink-300: #c3cbdc;
-  --ink-500: #8b93a7;
+  --ink-100: #f5f1ea;
+  --ink-300: #c8c2b6;
+  --ink-500: #8c97a4;
   --ink-700: #5b6376;
 
-  --gradient-current: linear-gradient(100deg, var(--blue) 0%, var(--purple) 38%, var(--teal) 68%, var(--green) 100%);
+  --gradient-current: linear-gradient(100deg, var(--gold) 0%, var(--orange) 100%);
 
-  --font-display: "Exo", "Exo Fallback", system-ui, sans-serif;
-  --font-body: "Satoshi", "Satoshi Fallback", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "JetBrains Mono", "JetBrains Mono Fallback", monospace;
+  --font-body: "Inter", "Inter Fallback", system-ui, sans-serif;
 
   --container: 1180px;
   --edge: clamp(20px, 6vw, 72px);
@@ -55,10 +58,10 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-weight: 300;
   line-height: 1.08;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.005em;
   margin: 0;
   color: var(--ink-100);
 }
@@ -172,7 +175,7 @@ img {
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 30px -10px rgba(56, 174, 205, 0.45);
+  box-shadow: 0 10px 30px -10px rgba(232, 98, 42, 0.45);
 }
 
 .btn-ghost {

@@ -2,6 +2,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import LivingCurrent from "@/components/LivingCurrent";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export const metadata = {
   title: "Riverways — Growth Consultancy, Lagos",
@@ -20,11 +21,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -35,6 +32,7 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
           <Footer />
         </div>
+        <WhatsAppFloat />
       </body>
     </html>
   );

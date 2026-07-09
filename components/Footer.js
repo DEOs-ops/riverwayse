@@ -47,9 +47,10 @@ export default function Footer() {
           padding-bottom: 48px;
         }
         .footer-word {
-          font-family: var(--font-display);
-          font-size: 22px;
-          font-weight: 600;
+          font-family: var(--font-serif);
+          font-size: 26px;
+          font-weight: 300;
+          letter-spacing: 0.03em;
         }
         .footer-tag {
           margin-top: 12px;

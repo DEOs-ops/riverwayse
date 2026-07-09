@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const COLORS = ["#38aecd", "#8263b7", "#35ab72", "#1fbd5c"];
+const COLORS = ["#c9a84c", "#e8622a", "#c9a84c", "#e8622a"];
 
 export default function LivingCurrent() {
   const canvasRef = useRef(null);
