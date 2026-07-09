@@ -1,6 +1,7 @@
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import LivingCurrent from "@/components/LivingCurrent";
 
 export const metadata = {
   title: "Riverways — Growth Consultancy, Lagos",
@@ -28,9 +29,12 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <LivingCurrent />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <Nav />
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
