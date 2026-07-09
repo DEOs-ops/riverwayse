@@ -5,10 +5,10 @@ import CurrentRule from "@/components/CurrentRule";
 const CREDENTIALS = ["Opera Ads", "Miniso", "Revolution Plus", "Brit Properties", "Xgo Finance"];
 
 const DEOS_PREVIEW = [
-  { n: "01", name: "Discover", desc: "Where the business actually stands — market, customer, numbers." },
-  { n: "02", name: "Establish", desc: "The brand and positioning strong enough to charge for value, not just visibility." },
-  { n: "03", name: "Optimize", desc: "The channels, funnels and offers, tightened until they convert." },
-  { n: "04", name: "Scale", desc: "Systems that hold when demand — and pressure — goes up." },
+  { n: "D1", name: "Intent Signal Precision", desc: "Know exactly which awareness stage a prospect occupies — before a message is written." },
+  { n: "D4", name: "Mental Availability Engineering", desc: "Become the brand people retrieve first, not just the one they'd choose if they compared." },
+  { n: "D7", name: "Category Design Clarity", desc: "Could a stranger name your category in three seconds? Nothing else matters until this is true." },
+  { n: "D8", name: "Trust & Credibility Architecture", desc: "In high-distrust markets, trust is the gate everything else has to pass through first." },
 ];
 
 const SERVICE_PREVIEW = [
@@ -33,9 +33,9 @@ export default function HomePage() {
               not a splash.
             </h1>
             <p className="hero-sub">
-              Riverways builds the brand, offer, and systems Lagos businesses need to stop
-              competing on price and start compounding — using the DEOS framework, our
-              proprietary approach to sustainable growth.
+              Riverways runs every engagement through DEOS — the Demand Engineering
+              Operating System. Nine dimensions, three horizons, one weighted score.
+              Not a menu of services. An operating system for demand.
             </p>
             <div className="hero-actions">
               <Link href="/contact" className="btn btn-primary">
@@ -81,12 +81,13 @@ export default function HomePage() {
           <div className="section-head">
             <Reveal>
               <p className="eyebrow">The DEOS Framework</p>
-              <h2>Nine dimensions. One current.</h2>
+              <h2>Nine dimensions. Three horizons. One score.</h2>
             </Reveal>
             <Reveal>
               <p className="section-sub">
-                Every engagement runs through DEOS — our structured method for moving a business
-                from invisible to inevitable. Here are the first four dimensions.
+                Capture, Creation, Category — every engagement is scored across all three
+                horizons. A sample of four dimensions below; the full architecture is on the
+                DEOS page.
               </p>
             </Reveal>
           </div>

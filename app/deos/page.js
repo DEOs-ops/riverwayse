@@ -2,19 +2,97 @@ import Reveal from "@/components/Reveal";
 import Link from "next/link";
 
 export const metadata = {
-  title: "The DEOS Framework — Riverways",
+  title: "DEOS — The Demand Engineering Operating System — Riverways",
 };
 
+const HORIZONS = [
+  {
+    id: "H1",
+    name: "Capture",
+    timeframe: "0–90 days",
+    question: "How do we convert existing intent with maximum efficiency?",
+  },
+  {
+    id: "H2",
+    name: "Creation",
+    timeframe: "90 days – 2 years",
+    question: "How do we build mental availability so we're chosen before search begins?",
+  },
+  {
+    id: "H3",
+    name: "Category",
+    timeframe: "2–10 years",
+    question: "How do we define the problem so our solution becomes the only logical answer?",
+  },
+];
+
 const DIMENSIONS = [
-  { n: "01", name: "Discover", desc: "Audit the real state of the business — market position, customer truth, and the numbers behind both." },
-  { n: "02", name: "Define", desc: "Sharpen positioning until the business has one story it can defend, not five it's guessing at." },
-  { n: "03", name: "Design", desc: "Build the visual and verbal identity that makes premium pricing believable." },
-  { n: "04", name: "Build", desc: "Ship the website and digital infrastructure the brand actually deserves." },
-  { n: "05", name: "Launch", desc: "Take the repositioned brand to market with a real plan, not a hope." },
-  { n: "06", name: "Optimize", desc: "Tighten every funnel and channel until it converts instead of just existing." },
-  { n: "07", name: "Scale", desc: "Extend what's working across new channels, audiences, and formats." },
-  { n: "08", name: "Systemize", desc: "Turn manual wins into repeatable systems — so growth doesn't depend on any one person." },
-  { n: "09", name: "Sustain", desc: "Protect and compound what's been built, quarter over quarter." },
+  {
+    n: "D1",
+    horizon: "H1",
+    name: "Intent Signal Precision",
+    sub: "+ Job Trigger Identification",
+    hardStop: true,
+    desc: "Know exactly which awareness stage a prospect occupies — and the specific life circumstance that moved them — before a single message is written.",
+  },
+  {
+    n: "D2",
+    horizon: "H1",
+    name: "Frictionless Conversion Architecture",
+    desc: "Every unnecessary step between intent and action is a leak. We find them and close them.",
+  },
+  {
+    n: "D3",
+    horizon: "H1",
+    name: "System 1 Activation",
+    desc: "Win the instant, emotional response before rational comparison ever begins.",
+  },
+  {
+    n: "D4",
+    horizon: "H2",
+    name: "Mental Availability Engineering",
+    desc: "Build the distinctive assets and category associations that make a brand the one people retrieve first — not just the one they'd pick if they compared.",
+  },
+  {
+    n: "D5",
+    horizon: "H2",
+    name: "95% Content Architecture",
+    desc: "Serve the 95% of the market that isn't buying today, so the brand is already trusted the moment they are.",
+  },
+  {
+    n: "D6",
+    horizon: "H2",
+    name: "Shareability & Social Signal",
+    desc: "Engineer content people forward on their own. Earned attention compounds paid attention.",
+  },
+  {
+    n: "D7",
+    horizon: "H3",
+    name: "Category Design Clarity",
+    hardStop: true,
+    desc: "Could a stranger name the category you're building, in under three seconds? If not, nothing else in the stack matters yet.",
+  },
+  {
+    n: "D8",
+    horizon: "H3",
+    name: "Trust & Credibility Architecture",
+    hardStop: true,
+    desc: "In high-distrust markets, trust isn't a supporting asset — it's the gate everything else has to pass through first.",
+  },
+  {
+    n: "D9",
+    horizon: "H3",
+    name: "Temporal Orientation Balance",
+    desc: "The discipline of investing in tomorrow's demand while still funding today's — the 60:40 principle, applied.",
+  },
+];
+
+const VERDICTS = [
+  { range: "85–100", name: "Category King", action: "Launch immediately." },
+  { range: "70–84", name: "Capture Optimised", action: "Launch H1. Revise H2/H3 next cycle." },
+  { range: "55–69", name: "Creation Gap", action: "Don't launch H1 yet. Rebuild H2 first." },
+  { range: "40–54", name: "Architectural Failure", action: "Stop. Return to category design." },
+  { range: "Below 40", name: "Anti-Demand", action: "This creative destroys value. Full audit required." },
 ];
 
 export default function DeosPage() {
@@ -23,29 +101,71 @@ export default function DeosPage() {
       <section className="section deos-hero">
         <div className="container">
           <Reveal>
-            <p className="eyebrow">Our Methodology</p>
+            <p className="eyebrow">The operating system</p>
             <h1>
-              The <span className="gradient-text">DEOS</span> Framework
+              <span className="gradient-text">DEOS</span> — the Demand Engineering
+              Operating System
             </h1>
           </Reveal>
           <Reveal>
             <p className="deos-lede">
-              DEOS is how Riverways moves a business from invisible to inevitable — nine
-              dimensions, run in sequence, each one built on the last. Not a menu of services.
-              A current.
+              You cannot buy your way out of a positioning problem. But you can engineer
+              your way out of a category problem. DEOS is not a framework to adopt — it's
+              an operating system to run: nine dimensions, three horizons, one weighted
+              score out of 100.
             </p>
           </Reveal>
         </div>
       </section>
 
+      <section className="section deos-horizons">
+        <div className="container">
+          <Reveal>
+            <p className="eyebrow">Three Horizon Architecture</p>
+            <h2>Not stages. Simultaneous operating layers.</h2>
+            <p className="deos-sub">
+              H1 funds H2. H2 enables H3. H3 makes H1 cheaper. Run only H1 and
+              acquisition costs rise forever — a predictable failure DEOS calls
+              Horizon Collapse.
+            </p>
+          </Reveal>
+          <div className="horizon-grid">
+            {HORIZONS.map((h) => (
+              <Reveal as="div" key={h.id} className="horizon-card">
+                <span className="horizon-id">{h.id}</span>
+                <h3>{h.name}</h3>
+                <p className="horizon-time">{h.timeframe}</p>
+                <p className="horizon-q">{h.question}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section deos-list">
         <div className="container">
+          <Reveal>
+            <p className="eyebrow">The nine dimensions</p>
+            <h2>Every dimension scored. Three carry hard-stop status.</h2>
+            <p className="deos-sub">
+              A score below 5 on D1, D7, or D8 triggers an automatic Do Not Launch
+              verdict — regardless of the aggregate score. Execution quality is
+              evaluated last, not first.
+            </p>
+          </Reveal>
           <ol className="dim-list">
             {DIMENSIONS.map((d) => (
               <Reveal as="li" key={d.n} className="dim-row">
-                <span className="dim-n">{d.n}</span>
+                <span className="dim-n">
+                  {d.n}
+                  <span className="dim-horizon">{d.horizon}</span>
+                </span>
                 <div>
-                  <h3>{d.name}</h3>
+                  <h3>
+                    {d.name}
+                    {d.sub && <span className="dim-name-sub"> {d.sub}</span>}
+                    {d.hardStop && <span className="hard-stop-badge">Hard stop</span>}
+                  </h3>
                   <p>{d.desc}</p>
                 </div>
               </Reveal>
@@ -54,14 +174,32 @@ export default function DeosPage() {
         </div>
       </section>
 
+      <section className="section deos-verdict">
+        <div className="container">
+          <Reveal>
+            <p className="eyebrow">The verdict matrix</p>
+            <h2>Every audit ends in a number, and the number ends in an action.</h2>
+          </Reveal>
+          <div className="verdict-list">
+            {VERDICTS.map((v) => (
+              <Reveal as="div" key={v.name} className="verdict-row">
+                <span className="verdict-range">{v.range}</span>
+                <span className="verdict-name">{v.name}</span>
+                <span className="verdict-action">{v.action}</span>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section deos-cta">
         <div className="container deos-cta-inner">
           <Reveal>
-            <h2>See where your business sits in the current.</h2>
+            <h2>Find out where your demand architecture actually scores.</h2>
           </Reveal>
           <Reveal>
             <Link href="/contact" className="btn btn-primary">
-              Book your free growth audit
+              Book your DEOS audit
             </Link>
           </Reveal>
         </div>
@@ -70,69 +208,143 @@ export default function DeosPage() {
       <style>{`
         .deos-hero h1 {
           margin-top: 16px;
-          font-size: clamp(38px, 5.6vw, 60px);
+          font-size: clamp(34px, 5vw, 54px);
+          line-height: 1.08;
         }
         .deos-lede {
           margin-top: 22px;
-          max-width: 640px;
+          max-width: 680px;
           color: var(--ink-300);
           font-size: 17px;
+          line-height: 1.6;
+        }
+        .deos-sub {
+          margin-top: 14px;
+          max-width: 640px;
+          color: var(--ink-300);
+          font-size: 15px;
+          line-height: 1.6;
+        }
+        .horizon-grid {
+          margin-top: 40px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        @media (max-width: 860px) {
+          .horizon-grid { grid-template-columns: 1fr; }
+        }
+        .horizon-card {
+          padding: 28px;
+          border: 1px solid var(--line);
+          border-radius: 12px;
+        }
+        .horizon-id {
+          display: inline-block;
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          color: var(--teal);
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+        .horizon-card h3 {
+          font-size: 22px;
+          margin-bottom: 4px;
+        }
+        .horizon-time {
+          font-size: 13px;
+          color: var(--ink-400);
+          margin-bottom: 14px;
+        }
+        .horizon-q {
+          font-size: 14px;
+          color: var(--ink-300);
+          line-height: 1.55;
         }
         .dim-list {
+          margin-top: 40px;
           list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
         }
         .dim-row {
           display: grid;
           grid-template-columns: 90px 1fr;
-          gap: 28px;
-          padding: 30px 0;
-          border-bottom: 1px solid var(--navy-700);
-          align-items: start;
+          gap: 20px;
+          padding: 22px 0;
+          border-top: 1px solid var(--line);
         }
-        .dim-row:first-child {
-          border-top: 1px solid var(--navy-700);
-        }
+        .dim-row:last-child { border-bottom: 1px solid var(--line); }
         .dim-n {
-          font-family: var(--font-display);
-          font-size: 26px;
           font-weight: 700;
-          background: var(--gradient-current);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-        }
-        .dim-row h3 {
-          font-size: 21px;
-        }
-        .dim-row p {
-          margin-top: 8px;
-          color: var(--ink-500);
           font-size: 15px;
-          max-width: 560px;
-        }
-        .deos-cta-inner {
-          text-align: center;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: 28px;
+          gap: 4px;
         }
-        .deos-cta-inner h2 {
-          font-size: clamp(26px, 3.6vw, 36px);
-          max-width: 560px;
+        .dim-horizon {
+          font-size: 11px;
+          font-weight: 500;
+          color: var(--ink-400);
         }
+        .dim-row h3 {
+          font-size: 18px;
+          margin-bottom: 6px;
+        }
+        .dim-name-sub {
+          font-size: 14px;
+          font-weight: 400;
+          color: var(--ink-400);
+        }
+        .hard-stop-badge {
+          display: inline-block;
+          margin-left: 10px;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: #e6685f;
+          border: 1px solid #e6685f;
+          border-radius: 20px;
+          padding: 2px 8px;
+          vertical-align: middle;
+        }
+        .dim-row p {
+          font-size: 14px;
+          color: var(--ink-300);
+          line-height: 1.55;
+          max-width: 60ch;
+        }
+        .verdict-list {
+          margin-top: 32px;
+          display: flex;
+          flex-direction: column;
+        }
+        .verdict-row {
+          display: grid;
+          grid-template-columns: 90px 200px 1fr;
+          gap: 20px;
+          align-items: baseline;
+          padding: 16px 0;
+          border-top: 1px solid var(--line);
+        }
+        .verdict-row:last-child { border-bottom: 1px solid var(--line); }
         @media (max-width: 640px) {
-          .dim-row {
-            grid-template-columns: 48px 1fr;
-            gap: 16px;
+          .verdict-row {
+            grid-template-columns: 1fr;
+            gap: 4px;
           }
-          .dim-n {
-            font-size: 20px;
-          }
+        }
+        .verdict-range {
+          font-size: 13px;
+          font-weight: 600;
+          color: var(--teal);
+        }
+        .verdict-name {
+          font-size: 15px;
+          font-weight: 600;
+        }
+        .verdict-action {
+          font-size: 14px;
+          color: var(--ink-300);
         }
       `}</style>
     </>
