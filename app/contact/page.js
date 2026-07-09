@@ -4,19 +4,38 @@ import { useState } from "react";
 import Reveal from "@/components/Reveal";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", business: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", business: "", email: "", message: "", company: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [errorMsg, setErrorMsg] = useState("");
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Growth audit request — ${form.business || form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nBusiness: ${form.business}\nEmail: ${form.email}\n\n${form.message}`
-    );
-    window.location.href = `mailto:hello@riverwayse.com?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setStatus("success");
+      setForm({ name: "", business: "", email: "", message: "", company: "" });
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err.message || "Something went wrong. Please email hello@riverwayse.com directly.");
+    }
   }
 
   return (
@@ -53,11 +72,33 @@ export default function ContactPage() {
           </label>
           <label>
             What's the main growth challenge right now?
-            <textarea name="message" rows={5} value={form.message} onChange={handleChange} />
+            <textarea name="message" rows={5} required value={form.message} onChange={handleChange} />
           </label>
-          <button type="submit" className="btn btn-primary">
-            Send & book my audit
+
+          {/* Honeypot: hidden from real users, catches basic bots */}
+          <input
+            type="text"
+            name="company"
+            value={form.company}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+            className="hp-field"
+            aria-hidden="true"
+          />
+
+          <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
+            {status === "sending" ? "Sending…" : "Send & book my audit"}
           </button>
+
+          {status === "success" && (
+            <p className="form-status form-status-success">
+              Thanks — we've got it. We'll be in touch shortly.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="form-status form-status-error">{errorMsg}</p>
+          )}
         </Reveal>
       </div>
 
@@ -132,6 +173,28 @@ export default function ContactPage() {
         .contact-form button {
           margin-top: 6px;
           align-self: flex-start;
+        }
+        .contact-form button:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+        .hp-field {
+          position: absolute;
+          left: -9999px;
+          width: 1px;
+          height: 1px;
+          opacity: 0;
+          pointer-events: none;
+        }
+        .form-status {
+          font-size: 14px;
+          margin-top: 4px;
+        }
+        .form-status-success {
+          color: var(--teal);
+        }
+        .form-status-error {
+          color: #e6685f;
         }
         @media (max-width: 860px) {
           .contact-grid {
