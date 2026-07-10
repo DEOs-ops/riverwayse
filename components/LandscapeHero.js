@@ -91,6 +91,28 @@ export default function LandscapeHero() {
       <rect x="0" y="0" width="1600" height="900" fill="url(#lh-sky)" />
       <ellipse cx="800" cy="900" rx="700" ry="420" fill="url(#lh-sun)" />
 
+      {/* Twinkling stars, upper sky */}
+      <g fill="#f5f1ea">
+        <circle cx="180" cy="90" r="1.6" opacity="0.6">
+          <animate attributeName="opacity" values="0.15;0.75;0.15" dur="4.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="420" cy="60" r="1.2" opacity="0.5">
+          <animate attributeName="opacity" values="0.7;0.15;0.7" dur="6s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="700" cy="100" r="1.4" opacity="0.55">
+          <animate attributeName="opacity" values="0.2;0.7;0.2" dur="5.2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="1100" cy="70" r="1.8" opacity="0.6">
+          <animate attributeName="opacity" values="0.6;0.15;0.6" dur="7s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="1300" cy="120" r="1.2" opacity="0.45">
+          <animate attributeName="opacity" values="0.15;0.65;0.15" dur="5.8s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="1500" cy="80" r="1.4" opacity="0.5">
+          <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4.8s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
       {/* Drifting clouds */}
       <g opacity="0.16" filter="url(#lh-blur)">
         <ellipse cx="260" cy="180" rx="160" ry="34" fill="#f5f1ea">
@@ -112,6 +134,11 @@ export default function LandscapeHero() {
         opacity="0.55"
       />
 
+      {/* Soft mist band, dreamlike depth between far and mid layers */}
+      <rect x="0" y="470" width="1600" height="90" fill="#f5f1ea" opacity="0.06" filter="url(#lh-blur)">
+        <animate attributeName="opacity" values="0.04;0.09;0.04" dur="10s" repeatCount="indefinite" />
+      </rect>
+
       {/* Mid mountain layer */}
       <path
         ref={midRef}
@@ -119,6 +146,11 @@ export default function LandscapeHero() {
         fill="#16293e"
         opacity="0.8"
       />
+
+      {/* Soft mist band, ground fog near the river */}
+      <rect x="0" y="600" width="1600" height="70" fill="#f5f1ea" opacity="0.05" filter="url(#lh-blur)">
+        <animate attributeName="opacity" values="0.03;0.08;0.03" dur="8s" repeatCount="indefinite" />
+      </rect>
 
       {/* River, winding from the horizon toward the foreground, swivels on scroll */}
       <path

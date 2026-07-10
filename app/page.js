@@ -49,6 +49,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="hero-divider" aria-hidden="true">
+        <svg viewBox="0 0 1600 90" preserveAspectRatio="none">
+          <path
+            d="M0,0 C 400,90 1200,0 1600,60 L1600,90 L0,90 Z"
+            fill="var(--navy-900)"
+          />
+        </svg>
+      </div>
+
       <section className="section proof">
         <div className="container">
           <Reveal>
@@ -184,6 +193,17 @@ export default function HomePage() {
         .hero {
           padding: clamp(56px, 10vw, 96px) 0 clamp(40px, 6vw, 64px);
           overflow: hidden;
+        }
+        .hero-divider {
+          position: relative;
+          z-index: 2;
+          margin-top: -2px;
+          line-height: 0;
+        }
+        .hero-divider svg {
+          display: block;
+          width: 100%;
+          height: 70px;
         }
         .hero-fullbleed {
           position: relative;
