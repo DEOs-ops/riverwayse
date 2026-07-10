@@ -1,6 +1,62 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export default function LandscapeHero() {
+  const svgRef = useRef(null);
+  const farRef = useRef(null);
+  const midRef = useRef(null);
+  const riverRef = useRef(null);
+  const shimmerRef = useRef(null);
+  const nearRef = useRef(null);
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    let ticking = false;
+
+    function update() {
+      ticking = false;
+      const el = svgRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const progress = Math.min(Math.max(-rect.top / (rect.height || 1), 0), 1);
+
+      if (farRef.current) farRef.current.style.transform = `translateY(${progress * 24}px)`;
+      if (midRef.current) midRef.current.style.transform = `translateY(${progress * 46}px)`;
+      if (nearRef.current) nearRef.current.style.transform = `translateY(${progress * 70}px)`;
+
+      if (riverRef.current) {
+        riverRef.current.style.transform = `translateY(${progress * 60}px) rotate(${progress * 6}deg)`;
+        riverRef.current.style.transformOrigin = "820px 900px";
+      }
+      if (shimmerRef.current) {
+        shimmerRef.current.style.transform = `translateY(${progress * 60}px) rotate(${progress * 6}deg)`;
+        shimmerRef.current.style.transformOrigin = "820px 900px";
+      }
+      if (el) el.style.opacity = String(1 - progress * 0.55);
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <svg
+      ref={svgRef}
       className="landscape-hero-svg"
       viewBox="0 0 1600 900"
       preserveAspectRatio="xMidYMid slice"
@@ -50,6 +106,7 @@ export default function LandscapeHero() {
 
       {/* Far mountain layer */}
       <path
+        ref={farRef}
         d="M0,520 L120,430 L230,500 L360,380 L480,470 L620,360 L760,460 L900,390 L1040,480 L1180,400 L1320,470 L1460,410 L1600,470 L1600,900 L0,900 Z"
         fill="#1c3350"
         opacity="0.55"
@@ -57,19 +114,22 @@ export default function LandscapeHero() {
 
       {/* Mid mountain layer */}
       <path
+        ref={midRef}
         d="M0,610 L150,520 L280,590 L420,500 L560,600 L700,510 L860,610 L1000,530 L1150,620 L1300,540 L1460,620 L1600,560 L1600,900 L0,900 Z"
         fill="#16293e"
         opacity="0.8"
       />
 
-      {/* River, winding from the horizon to the foreground */}
+      {/* River, winding from the horizon toward the foreground, swivels on scroll */}
       <path
+        ref={riverRef}
         d="M760,540 C 740,610 820,650 800,720 C 780,790 860,820 840,900 L960,900 C 940,820 1000,790 980,720 C 960,650 900,610 880,540 Z"
         fill="url(#lh-river)"
         opacity="0.9"
       />
       {/* Shimmer overlay on the river */}
       <path
+        ref={shimmerRef}
         d="M760,540 C 740,610 820,650 800,720 C 780,790 860,820 840,900"
         fill="none"
         stroke="#f5f1ea"
@@ -83,6 +143,7 @@ export default function LandscapeHero() {
 
       {/* Near foreground ridge, darkest and closest */}
       <path
+        ref={nearRef}
         d="M0,720 L200,660 L400,710 L620,650 L760,700 L880,700 L1020,655 L1220,705 L1420,665 L1600,715 L1600,900 L0,900 Z"
         fill="#0b1826"
       />
@@ -94,8 +155,13 @@ export default function LandscapeHero() {
           width: 100%;
           height: 100%;
           display: block;
+          will-change: opacity;
+        }
+        .landscape-hero-svg path {
+          will-change: transform;
         }
       `}</style>
     </svg>
   );
 }
+
