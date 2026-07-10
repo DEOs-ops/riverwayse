@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/about", label: "About" },
   { href: "/deos", label: "DEOS Framework" },
   { href: "/services", label: "Services" },
+  { href: "/courses", label: "Courses" },
   { href: "/contact", label: "Contact" },
 ];
 
