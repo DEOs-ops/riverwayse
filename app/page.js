@@ -2,7 +2,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import CurrentRule from "@/components/CurrentRule";
 
-const CREDENTIALS = ["Opera Ads", "Miniso", "Revolution Plus", "Brit Properties", "Xgo Finance"];
+const CREDENTIALS = ["Plusworld & Subsidiaries", "DevCenter Innovation", "Brit Properties", "XGO Finance", "Opera Ads"];
 
 const DEOS_PREVIEW = [
   { n: "D1", name: "Intent Signal Precision", desc: "Know exactly which awareness stage a prospect occupies — before a message is written." },
@@ -111,6 +111,35 @@ export default function HomePage() {
       </section>
 
       <CurrentRule style={{ margin: "0 auto", maxWidth: "var(--container)" }} />
+
+      <section className="section track-record">
+        <div className="container">
+          <div className="section-head">
+            <Reveal>
+              <p className="eyebrow">Femi's track record</p>
+              <h2>Eight years of paid acquisition, before Riverways existed.</h2>
+              <p className="section-sub">
+                Individual career results across fintech, real estate, and e-commerce — the
+                experience DEOS was built to systematise.
+              </p>
+            </Reveal>
+          </div>
+          <div className="track-grid">
+            <Reveal className="track-metric">
+              <span className="track-num">₦4.5Bn+</span>
+              <span className="track-label">Revenue contributed via performance marketing at Plusworld</span>
+            </Reveal>
+            <Reveal className="track-metric">
+              <span className="track-num">60%</span>
+              <span className="track-label">Organic traffic growth delivered at Brit Properties</span>
+            </Reveal>
+            <Reveal className="track-metric">
+              <span className="track-num">95%</span>
+              <span className="track-label">Client retention rate held across accounts at Opera Ads</span>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       <section className="section services-teaser">
         <div className="container">
@@ -224,6 +253,51 @@ export default function HomePage() {
           font-weight: 600;
         }
 
+        .track-grid {
+          margin-top: 40px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0;
+        }
+        .track-metric {
+          padding: 32px;
+          border-left: 1px solid var(--navy-700);
+        }
+        .track-metric:first-child {
+          border-left: none;
+          padding-left: 0;
+        }
+        .track-num {
+          display: block;
+          font-family: var(--font-serif);
+          font-weight: 300;
+          font-size: clamp(2.5rem, 5vw, 3.75rem);
+          color: var(--gold);
+          line-height: 1;
+          margin-bottom: 12px;
+        }
+        .track-label {
+          display: block;
+          font-size: 14px;
+          color: var(--ink-500);
+          max-width: 28ch;
+          line-height: 1.5;
+        }
+        @media (max-width: 760px) {
+          .track-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+          .track-metric {
+            border-left: none;
+            border-top: 1px solid var(--navy-700);
+            padding: 24px 0;
+          }
+          .track-metric:first-child {
+            border-top: none;
+            padding-top: 0;
+          }
+        }
         .section-head {
           max-width: 620px;
           margin-bottom: 48px;

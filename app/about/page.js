@@ -7,30 +7,48 @@ export const metadata = {
 
 const STOPS = [
   {
-    name: "Opera Ads",
-    note: "Digital advertising strategy at scale, across one of the continent's largest ad platforms.",
+    name: "Plusworld & Subsidiaries",
+    note: "Growth Marketing Lead across four subsidiaries. Contributed to ₦4.5Bn+ in revenue and 4,000+ app downloads for Dandy's, through paid acquisition across Meta, Google, and TikTok.",
   },
-  { name: "Miniso", note: "Retail brand marketing for a global lifestyle retailer entering the Nigerian market." },
-  { name: "Revolution Plus", note: "Growth marketing inside a fast-moving Nigerian property & lifestyle group." },
-  { name: "Brit Properties", note: "Brand and demand generation in Lagos real estate." },
-  { name: "Xgo Finance", note: "Marketing for a Nigerian fintech, where trust has to be earned in every asset." },
+  {
+    name: "DevCenter Innovation & Subsidiaries",
+    note: "Digital Marketing Manager. Delivered 25% ROI improvement on ₦15M+ monthly ad spend across four subsidiaries, and a 40% increase in qualified pipeline.",
+  },
+  {
+    name: "Brit Properties Nigeria",
+    note: "Interim Communications Manager & Brand Strategist. Drove 60% growth in organic traffic and doubled mobile app engagement time in Lagos real estate.",
+  },
+  {
+    name: "XGO Finance",
+    note: "Digital Marketing Specialist. Doubled fintech app engagement time while cutting user drop-off by 30%, where trust has to be earned in every asset.",
+  },
+  {
+    name: "Opera Ads",
+    note: "Digital Marketing Specialist across one of the continent's largest ad platforms. Held a 95% client retention rate across multiple industry accounts.",
+  },
 ];
 
 export default function AboutPage() {
   return (
     <>
       <section className="section about-hero">
-        <div className="container">
-          <Reveal>
-            <p className="eyebrow">About</p>
-            <h1>Oluwafemi Akintola</h1>
-          </Reveal>
-          <Reveal>
-            <p className="about-lede">
-              Founder of Riverways. Six years in Nigerian digital marketing before deciding the
-              agencies he'd worked with — and worked for — weren't built to make their clients'
-              growth actually compound.
-            </p>
+        <div className="container about-hero-grid">
+          <div>
+            <Reveal>
+              <p className="eyebrow">About</p>
+              <h1>Oluwafemi Akintola</h1>
+            </Reveal>
+            <Reveal>
+              <p className="about-lede">
+                Founder of Riverways. 8+ years leading performance marketing across Nigerian
+                fintech, real estate, e-commerce, and technology — before deciding the agencies
+                he'd worked with, and worked for, weren't built to make clients' growth actually
+                compound.
+              </p>
+            </Reveal>
+          </div>
+          <Reveal className="about-portrait">
+            <img src="/femi-headshot.png" alt="Oluwafemi Akintola, founder of Riverways" />
           </Reveal>
         </div>
       </section>
@@ -83,6 +101,33 @@ export default function AboutPage() {
       </section>
 
       <style>{`
+        .about-hero-grid {
+          display: grid;
+          grid-template-columns: 1.2fr 0.8fr;
+          gap: 48px;
+          align-items: center;
+        }
+        .about-portrait {
+          justify-self: center;
+        }
+        .about-portrait img {
+          width: 100%;
+          max-width: 320px;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          border-radius: 16px;
+          border: 1px solid var(--navy-700);
+          box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.5);
+        }
+        @media (max-width: 760px) {
+          .about-hero-grid {
+            grid-template-columns: 1fr;
+          }
+          .about-portrait {
+            order: -1;
+            max-width: 220px;
+          }
+        }
         .about-hero h1 {
           margin-top: 16px;
           font-size: clamp(38px, 5.4vw, 58px);
