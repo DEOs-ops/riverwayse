@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
+import PageHeroGlow from "@/components/PageHeroGlow";
 
 export const metadata = {
   title: "About Femi — Riverways",
@@ -31,8 +32,9 @@ const STOPS = [
 export default function AboutPage() {
   return (
     <>
-      <section className="section about-hero">
-        <div className="container about-hero-grid">
+      <section className="section about-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <PageHeroGlow />
+        <div className="container about-hero-grid" style={{ position: "relative", zIndex: 1 }}>
           <div>
             <Reveal>
               <p className="eyebrow">About</p>

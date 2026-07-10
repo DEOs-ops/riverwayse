@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
+import PageHeroGlow from "@/components/PageHeroGlow";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", business: "", email: "", message: "", company: "" });
@@ -39,8 +40,9 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="section contact">
-      <div className="container contact-grid">
+    <section className="section contact" style={{ position: "relative", overflow: "hidden" }}>
+      <PageHeroGlow />
+      <div className="container contact-grid" style={{ position: "relative", zIndex: 1 }}>
         <Reveal as="div">
           <p className="eyebrow">Contact</p>
           <h1>Let's look at where your growth is stuck.</h1>

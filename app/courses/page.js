@@ -1,6 +1,7 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import PortalCard from "@/components/PortalCard";
+import PageHeroGlow from "@/components/PageHeroGlow";
 import { COURSES } from "./data";
 
 export const metadata = {
@@ -10,8 +11,9 @@ export const metadata = {
 export default function CoursesPage() {
   return (
     <>
-      <section className="section courses-hero">
-        <div className="container">
+      <section className="section courses-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <PageHeroGlow />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">100% Virtual</p>
             <h1>Learn the system, not just the tools.</h1>

@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
+import PageHeroGlow from "@/components/PageHeroGlow";
 
 export const metadata = {
   title: "Services & Pricing — Riverways",
@@ -76,8 +77,9 @@ const PROJECTS = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="section services-hero">
-        <div className="container">
+      <section className="section services-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <PageHeroGlow />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">Services</p>
             <h1>A package for wherever you're growing from.</h1>

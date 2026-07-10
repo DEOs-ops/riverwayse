@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import PageHeroGlow from "@/components/PageHeroGlow";
 import { COURSES } from "../data";
 
 export function generateStaticParams() {
@@ -29,8 +30,9 @@ export default function CourseDetailPage({ params }) {
 
   return (
     <>
-      <section className="section course-detail-hero">
-        <div className="container">
+      <section className="section course-detail-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <PageHeroGlow />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">
               {course.n} · {course.duration}

@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
+import PageHeroGlow from "@/components/PageHeroGlow";
 
 export const metadata = {
   title: "DEOS — The Demand Engineering Operating System — Riverways",
@@ -98,8 +99,9 @@ const VERDICTS = [
 export default function DeosPage() {
   return (
     <>
-      <section className="section deos-hero">
-        <div className="container">
+      <section className="section deos-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <PageHeroGlow />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">The operating system</p>
             <h1>
