@@ -21,6 +21,11 @@
      a border, use --navy-700 or --accent-wash instead. */
   --glow-gold: rgba(201, 168, 76, 0.55);
   --glow-ember: rgba(232, 98, 42, 0.55);
+  /* Bioluminescent accent, reserved for the hero's underwater light —
+     the river's glow, drifting light-particles, the light shaft.
+     Not used for buttons/structure; keeps gold/ember as the site's
+     real accent identity while letting the hero scene breathe. */
+  --glow-cyan: rgba(120, 220, 255, 0.65);
 
   /* The one sanctioned low-opacity accent wash, for hairlines that sit
      directly beneath or beside a focal element (e.g. under an active nav

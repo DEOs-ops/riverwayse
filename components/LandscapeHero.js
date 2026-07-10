@@ -78,8 +78,14 @@ export default function LandscapeHero() {
         </radialGradient>
 
         <linearGradient id="lh-river" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#e8622a" stopOpacity="0.9" />
+          <stop offset="0%" stopColor="#78dcff" stopOpacity="0.75" />
+          <stop offset="100%" stopColor="#2b6fb0" stopOpacity="0.9" />
+        </linearGradient>
+
+        <linearGradient id="lh-shaft" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#dff5ff" stopOpacity="0.5" />
+          <stop offset="60%" stopColor="#78dcff" stopOpacity="0.14" />
+          <stop offset="100%" stopColor="#78dcff" stopOpacity="0" />
         </linearGradient>
 
         <filter id="lh-blur" x="-50%" y="-50%" width="200%" height="200%">
@@ -90,6 +96,11 @@ export default function LandscapeHero() {
       {/* Sky */}
       <rect x="0" y="0" width="1600" height="900" fill="url(#lh-sky)" />
       <ellipse cx="800" cy="900" rx="700" ry="420" fill="url(#lh-sun)" />
+
+      {/* Bioluminescent light shaft, descending toward the river source */}
+      <path d="M660,0 L960,0 L860,560 L780,560 Z" fill="url(#lh-shaft)">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="7s" repeatCount="indefinite" />
+      </path>
 
       {/* Twinkling stars, upper sky */}
       <g fill="#f5f1ea">
@@ -164,14 +175,30 @@ export default function LandscapeHero() {
         ref={shimmerRef}
         d="M760,540 C 740,610 820,650 800,720 C 780,790 860,820 840,900"
         fill="none"
-        stroke="#f5f1ea"
+        stroke="#dff5ff"
         strokeWidth="4"
         strokeLinecap="round"
         strokeDasharray="10 22"
-        opacity="0.55"
+        opacity="0.7"
       >
         <animate attributeName="stroke-dashoffset" values="0; -320" dur="5s" repeatCount="indefinite" />
       </path>
+
+      {/* Drifting bioluminescent glow particles, near the river */}
+      <g filter="url(#lh-blur)">
+        <circle cx="720" cy="700" r="10" fill="#78dcff" opacity="0.5">
+          <animate attributeName="opacity" values="0.2;0.6;0.2" dur="5s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="translate" values="0 0; 20 -40; 0 -70" dur="14s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="900" cy="760" r="7" fill="#dff5ff" opacity="0.45">
+          <animate attributeName="opacity" values="0.15;0.55;0.15" dur="6.5s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="translate" values="0 0; -16 -50; 0 -90" dur="16s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="840" cy="640" r="6" fill="#78dcff" opacity="0.4">
+          <animate attributeName="opacity" values="0.15;0.5;0.15" dur="5.5s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="translate" values="0 0; 12 -35; 0 -60" dur="12s" repeatCount="indefinite" />
+        </circle>
+      </g>
 
       {/* Near foreground ridge, darkest and closest */}
       <path

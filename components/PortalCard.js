@@ -67,8 +67,9 @@ export default function PortalCard({ href, className = "", children, navigate = 
           border-radius: inherit;
           background: radial-gradient(
             circle at var(--mx, 50%) var(--my, 50%),
-            rgba(201, 168, 76, 0.22),
-            transparent 55%
+            rgba(120, 220, 255, 0.12),
+            rgba(201, 168, 76, 0.2) 40%,
+            transparent 60%
           );
           opacity: 0;
           transition: opacity 200ms ease;
