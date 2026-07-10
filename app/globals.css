@@ -13,7 +13,7 @@
   --gold: #c9a84c;
   --teal: var(--gold);
   --ember: #e8622a;
-  --gradient-current: linear-gradient(100deg, var(--gold) 0%, var(--ember) 100%);
+  --gradient-current: linear-gradient(100deg, var(--gold) 0%, #78dcff 52%, var(--ember) 100%);
 
   /* Glow-only values. These exist exclusively for light/glow effects
      (button halos, hover bloom, the hero light shaft) — never for
@@ -215,6 +215,7 @@ img {
   transform: translateY(-1px);
   box-shadow:
     0 10px 34px -8px var(--glow-ember),
+    0 2px 16px -4px var(--glow-cyan),
     0 2px 16px -4px var(--glow-gold);
 }
 
