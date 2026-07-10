@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import CurrentRule from "@/components/CurrentRule";
+import LandscapeHero from "@/components/LandscapeHero";
 
 const CREDENTIALS = ["Plusworld & Subsidiaries", "DevCenter Innovation", "Brit Properties", "XGO Finance", "Opera Ads"];
 
@@ -21,33 +22,29 @@ const SERVICE_PREVIEW = [
 export default function HomePage() {
   return (
     <>
-      <section className="hero">
-        <div className="container hero-grid">
-          <div>
-            <p className="eyebrow">Riverways · Growth Consultancy, Lagos</p>
-            <h1 className="hero-title">
-              Growth that moves
-              <br />
-              like a <span className="gradient-text">current</span>,
-              <br />
-              not a splash.
-            </h1>
-            <p className="hero-sub">
-              Riverways runs every engagement through DEOS — the Demand Engineering
-              Operating System. Nine dimensions, three horizons, one weighted score.
-              Not a menu of services. An operating system for demand.
-            </p>
-            <div className="hero-actions">
-              <Link href="/contact" className="btn btn-primary">
-                Book a free growth audit
-              </Link>
-              <Link href="/deos" className="btn btn-ghost">
-                Explore the DEOS framework
-              </Link>
-            </div>
-          </div>
-          <div className="hero-visual" aria-hidden="true">
-            <img src="/riverways-mark.jpg" alt="" />
+      <section className="hero hero-fullbleed">
+        <LandscapeHero />
+        <div className="container hero-fullbleed-inner">
+          <p className="eyebrow">Riverways · Growth Consultancy, Lagos</p>
+          <h1 className="hero-title hero-title-center">
+            Growth that moves
+            <br />
+            like a <span className="gradient-text">current</span>,
+            <br />
+            not a splash.
+          </h1>
+          <p className="hero-sub hero-sub-center">
+            Riverways runs every engagement through DEOS — the Demand Engineering
+            Operating System. Nine dimensions, three horizons, one weighted score.
+            Not a menu of services. An operating system for demand.
+          </p>
+          <div className="hero-actions hero-actions-center">
+            <Link href="/contact" className="btn btn-primary">
+              Book a free growth audit
+            </Link>
+            <Link href="/deos" className="btn btn-ghost">
+              Explore the DEOS framework
+            </Link>
           </div>
         </div>
       </section>
@@ -187,6 +184,33 @@ export default function HomePage() {
         .hero {
           padding: clamp(56px, 10vw, 96px) 0 clamp(40px, 6vw, 64px);
           overflow: hidden;
+        }
+        .hero-fullbleed {
+          position: relative;
+          min-height: 92vh;
+          display: flex;
+          align-items: center;
+          padding-top: clamp(96px, 14vw, 140px);
+        }
+        .hero-fullbleed-inner {
+          position: relative;
+          z-index: 2;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .hero-title-center {
+          margin-top: 20px;
+          font-size: clamp(38px, 5.8vw, 68px);
+          max-width: 16ch;
+        }
+        .hero-sub-center {
+          margin-top: 24px;
+          max-width: 620px;
+        }
+        .hero-actions-center {
+          justify-content: center;
         }
         .hero-grid {
           display: grid;
