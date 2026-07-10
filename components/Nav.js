@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import RLogo from "./RLogo";
 
 const LINKS = [
   { href: "/about", label: "About" },
@@ -18,9 +17,8 @@ export default function Nav() {
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <Link href="/" className="nav-brand" onClick={() => setOpen(false)}>
-          <RLogo size={28} />
-          <span>Riverways</span>
+        <Link href="/" className="nav-brand" onClick={() => setOpen(false)} aria-label="Riverways home">
+          <img src="/riverways-mark.jpg" alt="Riverways" width="36" height="36" className="nav-mark" />
         </Link>
 
         <nav className={`nav-links ${open ? "is-open" : ""}`}>

@@ -53,7 +53,7 @@ export default function LivingCurrent() {
       const { baseY, amp, speed, phase, color, width: sw } = strand;
       ctx.beginPath();
       ctx.strokeStyle = color;
-      ctx.globalAlpha = 0.16;
+      ctx.globalAlpha = 0.1;
       ctx.lineWidth = sw;
       for (let x = 0; x <= width; x += 8) {
         const y =
@@ -119,7 +119,7 @@ export default function LivingCurrent() {
         height: "100%",
         zIndex: 0,
         pointerEvents: "none",
-        opacity: 0.7,
+        opacity: 0.4,
       }}
     />
   );
