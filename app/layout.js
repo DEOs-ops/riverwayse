@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import LivingCurrent from "@/components/LivingCurrent";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata = {
   title: "Riverways — Growth Consultancy, Lagos",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
           <Footer />
         </div>
         <WhatsAppFloat />
+        <PageTransition />
       </body>
     </html>
   );

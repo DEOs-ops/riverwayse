@@ -1,37 +1,11 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
+import PortalCard from "@/components/PortalCard";
+import { COURSES } from "./data";
 
 export const metadata = {
   title: "Courses — Riverways",
 };
-
-const COURSES = [
-  {
-    n: "01",
-    name: "Introduction to Digital Marketing",
-    desc: "The foundations: how demand actually moves online, and where most Nigerian businesses lose it before they ever get to a campaign.",
-  },
-  {
-    n: "02",
-    name: "Paid Ads",
-    desc: "Meta, Google, and TikTok — built around System 1 activation and frictionless conversion, not just budget and boosting.",
-  },
-  {
-    n: "03",
-    name: "Email Marketing",
-    desc: "Sequences and lists that build trust before they sell — the 95% content architecture applied to your inbox.",
-  },
-  {
-    n: "04",
-    name: "Web Design",
-    desc: "Sites built to convert intent, not just look presentable — structure, copy, and speed working together.",
-  },
-  {
-    n: "05",
-    name: "Copywriting",
-    desc: "Words that pass the Stranger Test — clear enough that a cold reader gets it in three seconds.",
-  },
-];
 
 export default function CoursesPage() {
   return (
@@ -55,11 +29,13 @@ export default function CoursesPage() {
         <div className="container">
           <ol className="course-grid">
             {COURSES.map((c) => (
-              <Reveal as="li" key={c.n} className="course-card">
-                <span className="course-n">{c.n}</span>
-                <h2>{c.name}</h2>
-                <p>{c.desc}</p>
-                <span className="course-tag">Virtual · Live sessions</span>
+              <Reveal as="li" key={c.slug}>
+                <PortalCard href={`/courses/${c.slug}`} className="course-card">
+                  <span className="course-n">{c.n}</span>
+                  <h2>{c.name}</h2>
+                  <p>{c.desc}</p>
+                  <span className="course-tag">Virtual · Live sessions →</span>
+                </PortalCard>
               </Reveal>
             ))}
           </ol>

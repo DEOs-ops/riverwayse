@@ -2,6 +2,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import CurrentRule from "@/components/CurrentRule";
 import LandscapeHero from "@/components/LandscapeHero";
+import PortalCard from "@/components/PortalCard";
 
 const CREDENTIALS = ["Plusworld & Subsidiaries", "DevCenter Innovation", "Brit Properties", "XGO Finance", "Opera Ads"];
 
@@ -100,10 +101,12 @@ export default function HomePage() {
 
           <div className="deos-grid">
             {DEOS_PREVIEW.map((d) => (
-              <Reveal key={d.n} className="deos-card">
-                <span className="deos-n">{d.n}</span>
-                <h3>{d.name}</h3>
-                <p>{d.desc}</p>
+              <Reveal key={d.n}>
+                <PortalCard href="/deos" className="deos-card">
+                  <span className="deos-n">{d.n}</span>
+                  <h3>{d.name}</h3>
+                  <p>{d.desc}</p>
+                </PortalCard>
               </Reveal>
             ))}
           </div>
@@ -158,10 +161,12 @@ export default function HomePage() {
 
           <div className="tier-grid">
             {SERVICE_PREVIEW.map((s) => (
-              <Reveal key={s.tier} className="tier-card">
-                <h3>{s.tier}</h3>
-                <p className="tier-price">{s.price}</p>
-                <p className="tier-who">{s.who}</p>
+              <Reveal key={s.tier}>
+                <PortalCard href="/services" className="tier-card">
+                  <h3>{s.tier}</h3>
+                  <p className="tier-price">{s.price}</p>
+                  <p className="tier-who">{s.who}</p>
+                </PortalCard>
               </Reveal>
             ))}
           </div>
