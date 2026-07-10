@@ -11,6 +11,7 @@
      file (--blue, --purple, --teal, --green) was one of these two wearing
      a different name — collapsed here into their honest identities. */
   --gold: #c9a84c;
+  --teal: var(--gold);
   --ember: #e8622a;
   --gradient-current: linear-gradient(100deg, var(--gold) 0%, var(--ember) 100%);
 
