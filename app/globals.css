@@ -1,23 +1,35 @@
 :root {
+  /* Structural navy scale — real navy, used for backgrounds, borders, lines.
+     Never gold-tinted. Structure stays neutral so the accent reads as accent. */
   --navy-950: #0b1826;
   --navy-900: #16293e;
   --navy-800: #1c3350;
-  --navy-700: rgba(201, 168, 76, 0.22);
-  --navy-600: rgba(201, 168, 76, 0.35);
+  --navy-700: #24405f;
+  --navy-600: #2f4f73;
 
-  --blue: #c9a84c;
-  --purple: #e8622a;
-  --teal: #c9a84c;
-  --green: #e8622a;
+  /* The two real brand colors from the logo. Everything else in the old
+     file (--blue, --purple, --teal, --green) was one of these two wearing
+     a different name — collapsed here into their honest identities. */
   --gold: #c9a84c;
-  --orange: #e8622a;
+  --ember: #e8622a;
+  --gradient-current: linear-gradient(100deg, var(--gold) 0%, var(--ember) 100%);
+
+  /* Glow-only values. These exist exclusively for light/glow effects
+     (button halos, hover bloom, the hero light shaft) — never for
+     structural borders or dividers. If you're tempted to use these on
+     a border, use --navy-700 or --accent-wash instead. */
+  --glow-gold: rgba(201, 168, 76, 0.55);
+  --glow-ember: rgba(232, 98, 42, 0.55);
+
+  /* The one sanctioned low-opacity accent wash, for hairlines that sit
+     directly beneath or beside a focal element (e.g. under an active nav
+     item). Not for general-purpose borders — that's --navy-700. */
+  --accent-wash: rgba(201, 168, 76, 0.14);
 
   --ink-100: #f5f1ea;
   --ink-300: #c8c2b6;
   --ink-500: #8c97a4;
   --ink-700: #5b6376;
-
-  --gradient-current: linear-gradient(100deg, var(--gold) 0%, var(--orange) 100%);
 
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-display: "JetBrains Mono", "JetBrains Mono Fallback", monospace;
@@ -88,12 +100,12 @@ img {
 }
 
 ::selection {
-  background: var(--purple);
+  background: var(--ember);
   color: var(--ink-100);
 }
 
 :focus-visible {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 
@@ -170,14 +182,39 @@ img {
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
+/* Primary button — the one place on the page allowed to run at full
+   accent saturation. Volumetric glow via a blurred pseudo-element behind
+   the surface, rather than a flat painted gradient, so it reads as light
+   emanating through water rather than a colored shape. */
 .btn-primary {
+  position: relative;
   background: var(--gradient-current);
   color: var(--navy-950);
+  isolation: isolate;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  background: var(--gradient-current);
+  filter: blur(16px);
+  opacity: 0.32;
+  z-index: -1;
+  transition: opacity 0.35s ease, filter 0.35s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 30px -10px rgba(232, 98, 42, 0.45);
+  box-shadow:
+    0 10px 34px -8px var(--glow-ember),
+    0 2px 16px -4px var(--glow-gold);
+}
+
+.btn-primary:hover::before {
+  opacity: 0.55;
+  filter: blur(22px);
 }
 
 .btn-ghost {
@@ -187,15 +224,28 @@ img {
 }
 
 .btn-ghost:hover {
-  border-color: var(--teal);
+  border-color: var(--gold);
   background: var(--navy-800);
 }
 
+/* Card — now a frosted glass panel rather than a flat navy block, so
+   whatever sits behind it (the parallax landscape, the ambient current
+   canvas) reads through. Border sits at accent-wash strength at rest and
+   only warms toward full gold on hover — the card should feel like it's
+   floating in the scene, not painted over it. */
 .card {
-  background: var(--navy-800);
-  border: 1px solid var(--navy-700);
+  background: rgba(28, 51, 80, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--accent-wash);
   border-radius: 18px;
   padding: 32px;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(201, 168, 76, 0.4);
+  background: rgba(28, 51, 80, 0.72);
 }
 
 .section {
