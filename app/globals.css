@@ -23,6 +23,8 @@
   --font-display: "JetBrains Mono", "JetBrains Mono Fallback", monospace;
   --font-body: "Inter", "Inter Fallback", system-ui, sans-serif;
 
+  --line: var(--navy-700);
+
   --container: 1180px;
   --edge: clamp(20px, 6vw, 72px);
 }

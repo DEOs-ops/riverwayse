@@ -116,6 +116,12 @@ export default function CoursesPage() {
           display: flex;
           flex-direction: column;
           gap: 10px;
+          transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        }
+        .course-card:hover {
+          transform: translateY(-6px);
+          border-color: var(--gold);
+          box-shadow: 0 20px 40px -20px rgba(201, 168, 76, 0.35);
         }
         .course-n {
           font-family: var(--font-display);

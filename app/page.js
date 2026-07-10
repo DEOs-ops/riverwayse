@@ -396,6 +396,12 @@ export default function HomePage() {
           border: 1px solid var(--navy-700);
           border-radius: 16px;
           padding: 28px 22px;
+          transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        }
+        .tier-card:hover {
+          transform: translateY(-6px);
+          border-color: var(--gold);
+          box-shadow: 0 20px 40px -20px rgba(201, 168, 76, 0.35);
         }
         .tier-card h3 {
           font-size: 20px;

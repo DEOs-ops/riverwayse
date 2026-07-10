@@ -238,6 +238,12 @@ export default function DeosPage() {
           padding: 28px;
           border: 1px solid var(--line);
           border-radius: 12px;
+          transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        }
+        .horizon-card:hover {
+          transform: translateY(-6px);
+          border-color: var(--gold);
+          box-shadow: 0 20px 40px -20px rgba(201, 168, 76, 0.3);
         }
         .horizon-id {
           display: inline-block;
@@ -271,6 +277,12 @@ export default function DeosPage() {
           gap: 20px;
           padding: 22px 0;
           border-top: 1px solid var(--line);
+          transition: padding-left 220ms ease, background 220ms ease;
+          border-radius: 8px;
+        }
+        .dim-row:hover {
+          padding-left: 14px;
+          background: rgba(201, 168, 76, 0.05);
         }
         .dim-row:last-child { border-bottom: 1px solid var(--line); }
         .dim-n {
