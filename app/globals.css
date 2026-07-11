@@ -11,8 +11,10 @@
      file (--blue, --purple, --teal, --green) was one of these two wearing
      a different name — collapsed here into their honest identities. */
   --gold: #c9a84c;
+  --gold-rgb: 201, 168, 76;
   --teal: var(--gold);
   --ember: #e8622a;
+  --ember-rgb: 232, 98, 42;
   --gradient-current: linear-gradient(100deg, var(--gold) 0%, #78dcff 52%, var(--ember) 100%);
 
   /* Glow-only values. These exist exclusively for light/glow effects

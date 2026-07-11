@@ -57,9 +57,9 @@ export default function AtmosphereLayer({
       <svg className="atmosphere-light-shaft" viewBox="0 0 400 800" preserveAspectRatio="none">
         <defs>
           <linearGradient id="lightShaftGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.55" />
-            <stop offset="60%" stopColor="var(--gold)" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
+            <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.55" />
+            <stop offset="60%" stopColor="#c9a84c" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#c9a84c" stopOpacity="0" />
           </linearGradient>
           <filter id="lightShaftBlur" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="18" />
