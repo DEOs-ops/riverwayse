@@ -27,6 +27,8 @@ const HORIZONS = [
   },
 ];
 
+const DIM_PHOTOS = ["/photos/misty-valley-mountains.jpg", "/photos/forest-sunbeams.jpg", "/photos/river-valley-hero.jpg"];
+
 const DIMENSIONS = [
   {
     n: "D1",
@@ -156,8 +158,15 @@ export default function DeosPage() {
             </p>
           </Reveal>
           <ol className="dim-list">
-            {DIMENSIONS.map((d) => (
+            {DIMENSIONS.map((d, i) => (
               <Reveal as="li" key={d.n} className="dim-row">
+                <div
+                  className="dim-thumb"
+                  style={{
+                    backgroundImage: `url(${DIM_PHOTOS[i % DIM_PHOTOS.length]})`,
+                    filter: `hue-rotate(${i * 22}deg) saturate(1.1) brightness(0.6)`,
+                  }}
+                />
                 <span className="dim-n">
                   {d.n}
                   <span className="dim-horizon">{d.horizon}</span>
@@ -275,16 +284,33 @@ export default function DeosPage() {
         }
         .dim-row {
           display: grid;
-          grid-template-columns: 90px 1fr;
-          gap: 20px;
+          grid-template-columns: 56px 60px 1fr;
+          gap: 16px;
+          align-items: flex-start;
           padding: 22px 0;
           border-top: 1px solid var(--line);
           transition: padding-left 220ms ease, background 220ms ease;
           border-radius: 8px;
         }
+        .dim-thumb {
+          width: 56px;
+          height: 56px;
+          border-radius: 10px;
+          background-size: cover;
+          background-position: center;
+          flex-shrink: 0;
+        }
         .dim-row:hover {
           padding-left: 14px;
           background: rgba(201, 168, 76, 0.05);
+        }
+        @media (max-width: 560px) {
+          .dim-row {
+            grid-template-columns: 44px 1fr;
+          }
+          .dim-thumb {
+            grid-row: span 2;
+          }
         }
         .dim-row:last-child { border-bottom: 1px solid var(--line); }
         .dim-n {

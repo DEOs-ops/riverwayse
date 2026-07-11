@@ -12,6 +12,8 @@ const TIERS = [
     price: "₦300,000",
     period: "/month",
     who: "Small businesses, startups, solopreneurs",
+    photo: "/photos/river-valley-hero.jpg",
+    hue: "0deg",
     items: [
       "Brand identity design (logo + variations)",
       "Social media management (3 platforms)",
@@ -25,6 +27,8 @@ const TIERS = [
     price: "₦650,000",
     period: "/month",
     who: "Established SMEs, growing companies",
+    photo: "/photos/misty-valley-mountains.jpg",
+    hue: "0deg",
     items: [
       "Complete brand guidelines & asset suite",
       "Professional website — up to 10 pages",
@@ -40,6 +44,8 @@ const TIERS = [
     price: "₦1,200,000",
     period: "/month",
     who: "Medium to large businesses",
+    photo: "/photos/forest-sunbeams.jpg",
+    hue: "0deg",
     items: [
       "Full brand ecosystem & asset library",
       "Custom website development",
@@ -54,6 +60,8 @@ const TIERS = [
     price: "₦3,000,000+",
     period: "/month",
     who: "Large corporations, multinationals",
+    photo: "/photos/river-valley-hero.jpg",
+    hue: "-40deg",
     items: [
       "Strategic brand consulting (C-level advisory)",
       "Enterprise-level digital solutions",
@@ -97,6 +105,10 @@ export default function ServicesPage() {
         <div className="container tier-grid-full">
           {TIERS.map((t) => (
             <Reveal key={t.name} className={`tier-card-full ${t.featured ? "is-featured" : ""}`}>
+              <div
+                className="tier-photo"
+                style={{ backgroundImage: `url(${t.photo})`, filter: `hue-rotate(${t.hue}) saturate(1.1) brightness(0.65)` }}
+              />
               {t.featured && <span className="tier-badge">Most popular</span>}
               <h3>{t.name}</h3>
               <p className="tier-who-full">{t.who}</p>
@@ -175,14 +187,22 @@ export default function ServicesPage() {
           display: flex;
           flex-direction: column;
         }
+        .tier-photo {
+          margin: -30px -24px 20px -24px;
+          height: 110px;
+          border-radius: 18px 18px 0 0;
+          background-size: cover;
+          background-position: center;
+        }
         .tier-card-full.is-featured {
           border-color: var(--teal);
           box-shadow: 0 0 0 1px var(--teal);
         }
         .tier-badge {
           position: absolute;
-          top: -12px;
-          left: 24px;
+          top: 12px;
+          left: 12px;
+          z-index: 2;
           background: var(--gradient-current);
           color: var(--navy-950);
           font-family: var(--font-display);
