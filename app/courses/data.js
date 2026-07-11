@@ -5,6 +5,8 @@ export const COURSES = [
     name: "Introduction to Digital Marketing",
     desc: "The foundations: how demand actually moves online, and where most Nigerian businesses lose it before they ever get to a campaign.",
     duration: "4 weeks · live sessions",
+    photo: "/photos/misty-valley-mountains.jpg",
+    hue: "0deg",
     whoFor: "Founders, career-switchers, and anyone who needs the full map before specialising in one channel.",
     curriculum: [
       "How demand actually forms: awareness stages and the 95/5 rule",
@@ -20,6 +22,8 @@ export const COURSES = [
     name: "Paid Ads",
     desc: "Meta, Google, and TikTok — built around System 1 activation and frictionless conversion, not just budget and boosting.",
     duration: "5 weeks · live sessions",
+    photo: "/photos/forest-sunbeams.jpg",
+    hue: "0deg",
     whoFor: "Marketers and business owners running (or about to run) real ad budgets.",
     curriculum: [
       "Campaign structure across Meta, Google, and TikTok",
@@ -35,6 +39,8 @@ export const COURSES = [
     name: "Email Marketing",
     desc: "Sequences and lists that build trust before they sell — the 95% content architecture applied to your inbox.",
     duration: "3 weeks · live sessions",
+    photo: "/photos/river-valley-hero.jpg",
+    hue: "0deg",
     whoFor: "Anyone with a list (or about to start one) who wants it to actually convert.",
     curriculum: [
       "List building that doesn't rely on discounts",
@@ -50,6 +56,8 @@ export const COURSES = [
     name: "Web Design",
     desc: "Sites built to convert intent, not just look presentable — structure, copy, and speed working together.",
     duration: "5 weeks · live sessions",
+    photo: "/photos/misty-valley-mountains.jpg",
+    hue: "-35deg",
     whoFor: "Designers, founders, and freelancers who want sites that perform, not just look good in a portfolio.",
     curriculum: [
       "Structuring a page around one conversion goal at a time",
@@ -65,6 +73,8 @@ export const COURSES = [
     name: "Copywriting",
     desc: "Words that pass the Stranger Test — clear enough that a cold reader gets it in three seconds.",
     duration: "3 weeks · live sessions",
+    photo: "/photos/forest-sunbeams.jpg",
+    hue: "40deg",
     whoFor: "Marketers, founders, and anyone who has to write for a business and wants it to actually land.",
     curriculum: [
       "The Stranger Test: writing so a cold reader gets it immediately",
