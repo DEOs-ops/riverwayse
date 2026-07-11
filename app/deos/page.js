@@ -99,6 +99,29 @@ const VERDICTS = [
   { range: "Below 40", name: "Anti-Demand", action: "This creative destroys value. Full audit required." },
 ];
 
+const DEOS_FAQ = [
+  {
+    q: "Is DEOS a marketing framework, or something broader?",
+    a: "DEOS (Demand Engineering Operating System) is Riverways' nine-dimension framework for diagnosing where a business's demand generation is breaking down and engineering a fix — it's run as an operating system, not a one-time audit.",
+  },
+  {
+    q: "How is a DEOS Audit different from a normal marketing audit?",
+    a: "A typical audit reviews channels in isolation. DEOS scores all nine dimensions across three horizons — Capture, Creation, Category — as one interconnected system, with hard-stop dimensions that override the aggregate score if they're failing.",
+  },
+  {
+    q: "Do I need marketing knowledge to get value from DEOS?",
+    a: "No. The framework is built to be understood by founders and business owners directly, not just marketing specialists — that's the point of translating it into plain questions rather than jargon.",
+  },
+  {
+    q: "How long does a DEOS Audit take?",
+    a: "The self-guided version on this site takes under 5 minutes. A full applied audit, with a human review of your specific numbers, is scoped during a 20-minute call.",
+  },
+  {
+    q: "Can DEOS apply to any industry?",
+    a: "Yes — the nine dimensions are structural, not industry-specific. Riverways has applied it across fintech, real estate, e-commerce, and technology.",
+  },
+];
+
 export default function DeosPage() {
   return (
     <>
@@ -203,6 +226,37 @@ export default function DeosPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="section deos-faq">
+        <div className="container">
+          <Reveal>
+            <p className="eyebrow">Common questions</p>
+            <h2>How DEOS actually works, in practice</h2>
+          </Reveal>
+          <div className="faq-list">
+            {DEOS_FAQ.map((f) => (
+              <Reveal as="div" key={f.q} className="faq-item">
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: DEOS_FAQ.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            }),
+          }}
+        />
       </section>
 
       <section className="section deos-cta">
@@ -354,6 +408,28 @@ export default function DeosPage() {
           color: var(--ink-300);
           line-height: 1.55;
           max-width: 60ch;
+        }
+        .faq-list {
+          margin-top: 32px;
+          max-width: 760px;
+          display: flex;
+          flex-direction: column;
+        }
+        .faq-item {
+          padding: 22px 0;
+          border-top: 1px solid var(--line);
+        }
+        .faq-item:last-child {
+          border-bottom: 1px solid var(--line);
+        }
+        .faq-item h3 {
+          font-size: 17px;
+          margin-bottom: 8px;
+        }
+        .faq-item p {
+          font-size: 14.5px;
+          color: var(--ink-300);
+          line-height: 1.6;
         }
         .verdict-list {
           margin-top: 32px;

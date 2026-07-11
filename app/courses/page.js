@@ -9,6 +9,29 @@ export const metadata = {
   title: "Courses — Riverways",
 };
 
+const COURSES_FAQ = [
+  {
+    q: "Do I need prior experience to join?",
+    a: "No prior experience is required for Introduction to Digital Marketing. The other four courses assume the foundations from that first course, or equivalent working knowledge.",
+  },
+  {
+    q: "Is there a certificate on completion?",
+    a: "Yes — every course ends with a completion certificate, though the real value is the work you actually ship during live sessions, not the certificate itself.",
+  },
+  {
+    q: "What if I miss a live session?",
+    a: "Sessions are recorded and shared with enrolled students, so missing one live doesn't mean missing the content — though live participation is where most of the value comes from.",
+  },
+  {
+    q: "How much do the courses cost?",
+    a: "Pricing per course is being finalised ahead of the Saturday launch. Join the waitlist and you'll get pricing and dates before public registration opens.",
+  },
+  {
+    q: "Can my team enrol together?",
+    a: "Yes — group enrolment is available. Mention your team size when you join the waitlist and we'll follow up with group pricing.",
+  },
+];
+
 export default function CoursesPage() {
   return (
     <>
@@ -51,6 +74,37 @@ export default function CoursesPage() {
             ))}
           </ol>
         </div>
+      </section>
+
+      <section className="section courses-faq">
+        <div className="container">
+          <Reveal>
+            <p className="eyebrow">Common questions</p>
+            <h2>Before you enrol</h2>
+          </Reveal>
+          <div className="faq-list">
+            {COURSES_FAQ.map((f) => (
+              <Reveal as="div" key={f.q} className="faq-item">
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: COURSES_FAQ.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            }),
+          }}
+        />
       </section>
 
       <section className="section courses-cta">
@@ -162,6 +216,28 @@ export default function CoursesPage() {
           font-size: 11px;
           color: var(--ink-300);
           letter-spacing: 0.04em;
+        }
+        .faq-list {
+          margin-top: 32px;
+          max-width: 760px;
+          display: flex;
+          flex-direction: column;
+        }
+        .faq-item {
+          padding: 22px 0;
+          border-top: 1px solid var(--navy-700);
+        }
+        .faq-item:last-child {
+          border-bottom: 1px solid var(--navy-700);
+        }
+        .faq-item h3 {
+          font-size: 17px;
+          margin-bottom: 8px;
+        }
+        .faq-item p {
+          font-size: 14.5px;
+          color: var(--ink-300);
+          line-height: 1.6;
         }
         .courses-cta-inner {
           text-align: center;

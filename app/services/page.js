@@ -83,6 +83,29 @@ const PROJECTS = [
   { name: "Video production", price: "from ₦250,000/video" },
 ];
 
+const SERVICES_FAQ = [
+  {
+    q: "What happens after I pick a tier?",
+    a: "Every engagement starts with a DEOS Audit against your business specifically. From there, work is scoped against whichever dimensions score weakest, not a generic checklist — so the first month looks different for every client.",
+  },
+  {
+    q: "Am I locked into a long-term contract?",
+    a: "No. Engagements run month-to-month. You can step down a tier, pause, or end the engagement with 30 days' notice — there's no multi-year lock-in.",
+  },
+  {
+    q: "Do you work with businesses outside Lagos or Nigeria?",
+    a: "Yes. Riverways is based in Lagos, but engagements run fully remote — the DEOS framework and delivery process don't depend on physical location.",
+  },
+  {
+    q: "What's actually different between the tiers beyond price?",
+    a: "Scope and speed. Higher tiers cover more of the nine DEOS dimensions simultaneously and get faster turnaround — the underlying methodology is identical across every tier.",
+  },
+  {
+    q: "What if I'm not sure which tier is right for my business?",
+    a: "Start with a free DEOS Audit instead of guessing. The audit result points directly at which horizon — Capture, Creation, or Category — needs investment first, which usually makes the tier choice obvious.",
+  },
+];
+
 export default function ServicesPage() {
   return (
     <>
@@ -148,6 +171,37 @@ export default function ServicesPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="section services-faq">
+        <div className="container">
+          <Reveal>
+            <p className="eyebrow">Common questions</p>
+            <h2>Before you pick a tier</h2>
+          </Reveal>
+          <div className="faq-list">
+            {SERVICES_FAQ.map((f) => (
+              <Reveal as="div" key={f.q} className="faq-item">
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: SERVICES_FAQ.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            }),
+          }}
+        />
       </section>
 
       <section className="section services-cta">
@@ -286,6 +340,29 @@ export default function ServicesPage() {
           font-weight: 600;
         }
 
+        .faq-list {
+          margin-top: 32px;
+          max-width: 760px;
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+        }
+        .faq-item {
+          padding: 22px 0;
+          border-top: 1px solid var(--navy-700);
+        }
+        .faq-item:last-child {
+          border-bottom: 1px solid var(--navy-700);
+        }
+        .faq-item h3 {
+          font-size: 17px;
+          margin-bottom: 8px;
+        }
+        .faq-item p {
+          font-size: 14.5px;
+          color: var(--ink-300);
+          line-height: 1.6;
+        }
         .services-cta-inner {
           text-align: center;
           display: flex;
