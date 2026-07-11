@@ -45,12 +45,13 @@ export default function AtmosphereLayer({
   particleCount = 70,
   showMonumentalType = true,
   monumentalWord = "current",
+  showBg = true,
 }) {
   const particles = useMemo(() => buildParticles(particleCount), [particleCount]);
 
   return (
     <div className="atmosphere-layer" aria-hidden="true">
-      <div className="atmosphere-bg" />
+      {showBg && <div className="atmosphere-bg" />}
       {showMonumentalType && <div className="atmosphere-monumental-type">{monumentalWord}</div>}
       <div className="atmosphere-mist atmosphere-mist--low" />
       <div className="atmosphere-mist atmosphere-mist--mid" />

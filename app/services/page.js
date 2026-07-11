@@ -88,7 +88,7 @@ export default function ServicesPage() {
     <>
       <section className="section services-hero" style={{ position: "relative", overflow: "hidden" }}>
         <PhotoHero src="/photos/river-valley-hero.jpg" />
-        <Atmosphere monumentalWord="services" showMonumentalType={false} particleCount={35} />
+        <Atmosphere monumentalWord="services" showMonumentalType={false} particleCount={35} showBg={false} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">Services</p>

@@ -50,7 +50,7 @@ export default function AboutPage() {
     <>
       <section className="section about-hero" style={{ position: "relative", overflow: "hidden" }}>
         <PhotoHero src="/photos/forest-sunbeams.jpg" position="center 30%" />
-        <Atmosphere monumentalWord="about" showMonumentalType={false} particleCount={35} />
+        <Atmosphere monumentalWord="about" showMonumentalType={false} particleCount={35} showBg={false} />
         <div className="container about-hero-grid" style={{ position: "relative", zIndex: 1 }}>
           <div>
             <Reveal>

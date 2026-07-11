@@ -33,7 +33,7 @@ export default function CourseDetailPage({ params }) {
     <>
       <section className="section course-detail-hero" style={{ position: "relative", overflow: "hidden" }}>
         <PhotoHero src="/photos/forest-sunbeams.jpg" position="center 60%" />
-        <Atmosphere monumentalWord="courses" showMonumentalType={false} particleCount={35} />
+        <Atmosphere monumentalWord="courses" showMonumentalType={false} particleCount={35} showBg={false} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">

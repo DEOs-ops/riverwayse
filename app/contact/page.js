@@ -43,7 +43,7 @@ export default function ContactPage() {
   return (
     <section className="section contact" style={{ position: "relative", overflow: "hidden" }}>
       <PhotoHero src="/photos/misty-valley-mountains.jpg" position="center 70%" />
-      <Atmosphere monumentalWord="contact" showMonumentalType={false} particleCount={35} />
+      <Atmosphere monumentalWord="contact" showMonumentalType={false} particleCount={35} showBg={false} />
       <div className="container contact-grid" style={{ position: "relative", zIndex: 1 }}>
         <Reveal as="div">
           <p className="eyebrow">Contact</p>

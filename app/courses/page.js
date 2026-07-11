@@ -14,7 +14,7 @@ export default function CoursesPage() {
     <>
       <section className="section courses-hero" style={{ position: "relative", overflow: "hidden" }}>
         <PhotoHero src="/photos/forest-sunbeams.jpg" position="center 60%" />
-        <Atmosphere monumentalWord="courses" showMonumentalType={false} particleCount={35} />
+        <Atmosphere monumentalWord="courses" showMonumentalType={false} particleCount={35} showBg={false} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">100% Virtual</p>

@@ -104,7 +104,7 @@ export default function DeosPage() {
     <>
       <section className="section deos-hero" style={{ position: "relative", overflow: "hidden" }}>
         <PhotoHero src="/photos/misty-valley-mountains.jpg" />
-        <Atmosphere monumentalWord="deos" showMonumentalType={false} particleCount={35} />
+        <Atmosphere monumentalWord="deos" showMonumentalType={false} particleCount={35} showBg={false} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">The operating system</p>

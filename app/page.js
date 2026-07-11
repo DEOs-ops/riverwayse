@@ -27,7 +27,7 @@ export default function HomePage() {
     <>
       <section className="hero hero-fullbleed">
         <PhotoHero src="/photos/misty-valley-mountains.jpg" />
-        <Atmosphere monumentalWord="current" particleCount={40} showMonumentalType={false} />
+        <Atmosphere monumentalWord="current" particleCount={40} showMonumentalType={false} showBg={false} />
         <div className="container hero-fullbleed-inner">
           <p className="eyebrow">Riverways · Growth Consultancy, Lagos</p>
           <h1 className="hero-title hero-title-center">

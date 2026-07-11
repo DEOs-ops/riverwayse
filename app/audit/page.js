@@ -65,7 +65,7 @@ export default function AuditPage() {
   return (
     <section className="section audit-section" style={{ position: "relative", overflow: "hidden" }}>
       <PhotoHero src="/photos/river-valley-hero.jpg" position="center 20%" />
-      <Atmosphere monumentalWord="audit" showMonumentalType={false} particleCount={35} />
+      <Atmosphere monumentalWord="audit" showMonumentalType={false} particleCount={35} showBg={false} />
       <div className="container audit-container" style={{ position: "relative", zIndex: 1 }}>
         {!atResults && (
           <Reveal key={step}>
