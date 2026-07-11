@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Atmosphere from "@/components/Atmosphere";
+import PhotoHero from "@/components/PhotoHero";
 import { AUDIT_QUESTIONS, HORIZON_LABELS } from "./questions";
 
 const DIM_FEEDBACK = {
@@ -63,7 +64,8 @@ export default function AuditPage() {
 
   return (
     <section className="section audit-section" style={{ position: "relative", overflow: "hidden" }}>
-      <Atmosphere monumentalWord="audit" />
+      <PhotoHero src="/photos/river-valley-hero.jpg" position="center 20%" />
+      <Atmosphere monumentalWord="audit" showMonumentalType={false} particleCount={35} />
       <div className="container audit-container" style={{ position: "relative", zIndex: 1 }}>
         {!atResults && (
           <Reveal key={step}>

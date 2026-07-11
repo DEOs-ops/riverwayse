@@ -1,10 +1,13 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import Atmosphere from "@/components/Atmosphere";
+import PhotoHero from "@/components/PhotoHero";
 
 export const metadata = {
   title: "About Femi — Riverways",
 };
+
+const STOP_PHOTOS = ["/photos/misty-valley-mountains.jpg", "/photos/forest-sunbeams.jpg", "/photos/river-valley-hero.jpg"];
 
 const STOPS = [
   {
@@ -29,11 +32,25 @@ const STOPS = [
   },
 ];
 
+const CERTIFICATIONS = [
+  { name: "Google Ads Certified Professional", note: "Advanced Search, Display, Video Advertising" },
+  { name: "Google Analytics Certified", note: "Advanced Analytics and Conversion Tracking" },
+  { name: "Facebook Blueprint Certified", note: "Facebook and Instagram Advertising" },
+  { name: "HubSpot Inbound Marketing Certified", note: "Content Marketing and Lead Generation" },
+];
+
+const EDUCATION = {
+  degree: "Bachelor of Science, Political Science",
+  school: "Madonna University, Okija, Anambra State, Nigeria",
+  years: "2009 – 2013",
+};
+
 export default function AboutPage() {
   return (
     <>
       <section className="section about-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <Atmosphere monumentalWord="about" />
+        <PhotoHero src="/photos/forest-sunbeams.jpg" position="center 30%" />
+        <Atmosphere monumentalWord="about" showMonumentalType={false} particleCount={35} />
         <div className="container about-hero-grid" style={{ position: "relative", zIndex: 1 }}>
           <div>
             <Reveal>
@@ -78,13 +95,37 @@ export default function AboutPage() {
           <Reveal as="div" className="about-track">
             <h2>Track record</h2>
             <ul className="track-list">
-              {STOPS.map((s) => (
+              {STOPS.map((s, i) => (
                 <li key={s.name}>
-                  <span className="track-name">{s.name}</span>
-                  <span className="track-note">{s.note}</span>
+                  <div
+                    className="track-thumb"
+                    style={{
+                      backgroundImage: `url(${STOP_PHOTOS[i % STOP_PHOTOS.length]})`,
+                      filter: `hue-rotate(${i * 28}deg) saturate(1.1) brightness(0.6)`,
+                    }}
+                  />
+                  <div>
+                    <span className="track-name">{s.name}</span>
+                    <span className="track-note">{s.note}</span>
+                  </div>
                 </li>
               ))}
             </ul>
+
+            <h2 className="about-section-spacer">Certifications</h2>
+            <ul className="cert-list">
+              {CERTIFICATIONS.map((c) => (
+                <li key={c.name}>
+                  <span className="cert-name">{c.name}</span>
+                  <span className="cert-note">{c.note}</span>
+                </li>
+              ))}
+            </ul>
+
+            <h2 className="about-section-spacer">Education</h2>
+            <p className="edu-line">
+              {EDUCATION.degree} — {EDUCATION.school} ({EDUCATION.years})
+            </p>
           </Reveal>
         </div>
       </section>
@@ -167,10 +208,54 @@ export default function AboutPage() {
           gap: 20px;
         }
         .track-list li {
+          display: flex;
+          gap: 14px;
           padding: 18px 20px;
           border: 1px solid var(--navy-700);
           border-radius: 14px;
           background: var(--navy-800);
+        }
+        .track-thumb {
+          width: 48px;
+          height: 48px;
+          border-radius: 10px;
+          background-size: cover;
+          background-position: center;
+          flex-shrink: 0;
+        }
+        .about-section-spacer {
+          margin-top: 36px;
+        }
+        .cert-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .cert-list li {
+          padding: 14px 18px;
+          border: 1px solid var(--navy-700);
+          border-radius: 12px;
+          background: var(--navy-800);
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+        }
+        .cert-name {
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--ink-100);
+        }
+        .cert-note {
+          font-size: 12.5px;
+          color: var(--ink-500);
+        }
+        .edu-line {
+          font-size: 14px;
+          color: var(--ink-300);
+          line-height: 1.6;
         }
         .track-name {
           display: block;

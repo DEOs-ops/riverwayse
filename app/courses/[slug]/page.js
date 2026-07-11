@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Atmosphere from "@/components/Atmosphere";
+import PhotoHero from "@/components/PhotoHero";
 import { COURSES } from "../data";
 
 export function generateStaticParams() {
@@ -31,7 +32,8 @@ export default function CourseDetailPage({ params }) {
   return (
     <>
       <section className="section course-detail-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <Atmosphere monumentalWord="courses" />
+        <PhotoHero src="/photos/forest-sunbeams.jpg" position="center 60%" />
+        <Atmosphere monumentalWord="courses" showMonumentalType={false} particleCount={35} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">

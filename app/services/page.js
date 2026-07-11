@@ -1,6 +1,7 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import Atmosphere from "@/components/Atmosphere";
+import PhotoHero from "@/components/PhotoHero";
 
 export const metadata = {
   title: "Services & Pricing — Riverways",
@@ -86,7 +87,8 @@ export default function ServicesPage() {
   return (
     <>
       <section className="section services-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <Atmosphere monumentalWord="services" />
+        <PhotoHero src="/photos/river-valley-hero.jpg" />
+        <Atmosphere monumentalWord="services" showMonumentalType={false} particleCount={35} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">Services</p>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
 import Atmosphere from "@/components/Atmosphere";
+import PhotoHero from "@/components/PhotoHero";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", business: "", email: "", message: "", company: "" });
@@ -41,7 +42,8 @@ export default function ContactPage() {
 
   return (
     <section className="section contact" style={{ position: "relative", overflow: "hidden" }}>
-      <Atmosphere monumentalWord="contact" />
+      <PhotoHero src="/photos/misty-valley-mountains.jpg" position="center 70%" />
+      <Atmosphere monumentalWord="contact" showMonumentalType={false} particleCount={35} />
       <div className="container contact-grid" style={{ position: "relative", zIndex: 1 }}>
         <Reveal as="div">
           <p className="eyebrow">Contact</p>
