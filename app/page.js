@@ -2,6 +2,8 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import CurrentRule from "@/components/CurrentRule";
 import LandscapeHero from "@/components/LandscapeHero";
+import PhotoHero from "@/components/PhotoHero";
+import Atmosphere from "@/components/Atmosphere";
 import PortalCard from "@/components/PortalCard";
 
 const CREDENTIALS = ["Plusworld & Subsidiaries", "DevCenter Innovation", "Brit Properties", "XGO Finance", "Opera Ads"];
@@ -24,7 +26,8 @@ export default function HomePage() {
   return (
     <>
       <section className="hero hero-fullbleed">
-        <LandscapeHero />
+        <PhotoHero src="/photos/misty-valley-mountains.jpg" />
+        <Atmosphere monumentalWord="current" particleCount={40} showMonumentalType={false} />
         <div className="container hero-fullbleed-inner">
           <p className="eyebrow">Riverways · Growth Consultancy, Lagos</p>
           <h1 className="hero-title hero-title-center">
