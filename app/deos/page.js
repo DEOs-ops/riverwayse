@@ -100,7 +100,7 @@ export default function DeosPage() {
   return (
     <>
       <section className="section deos-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <Atmosphere typeText="deos" />
+        <Atmosphere monumentalWord="deos" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">The operating system</p>

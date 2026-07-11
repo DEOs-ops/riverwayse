@@ -63,7 +63,7 @@ export default function AuditPage() {
 
   return (
     <section className="section audit-section" style={{ position: "relative", overflow: "hidden" }}>
-      <Atmosphere typeText="audit" />
+      <Atmosphere monumentalWord="audit" />
       <div className="container audit-container" style={{ position: "relative", zIndex: 1 }}>
         {!atResults && (
           <Reveal key={step}>

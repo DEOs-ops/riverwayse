@@ -12,7 +12,7 @@ export default function CoursesPage() {
   return (
     <>
       <section className="section courses-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <Atmosphere typeText="courses" />
+        <Atmosphere monumentalWord="courses" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">100% Virtual</p>

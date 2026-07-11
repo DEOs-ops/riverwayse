@@ -33,7 +33,7 @@ export default function AboutPage() {
   return (
     <>
       <section className="section about-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <Atmosphere typeText="about" />
+        <Atmosphere monumentalWord="about" />
         <div className="container about-hero-grid" style={{ position: "relative", zIndex: 1 }}>
           <div>
             <Reveal>

@@ -78,7 +78,7 @@ export default function ServicesPage() {
   return (
     <>
       <section className="section services-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <Atmosphere typeText="services" />
+        <Atmosphere monumentalWord="services" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">Services</p>

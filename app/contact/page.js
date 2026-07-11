@@ -41,7 +41,7 @@ export default function ContactPage() {
 
   return (
     <section className="section contact" style={{ position: "relative", overflow: "hidden" }}>
-      <Atmosphere typeText="contact" />
+      <Atmosphere monumentalWord="contact" />
       <div className="container contact-grid" style={{ position: "relative", zIndex: 1 }}>
         <Reveal as="div">
           <p className="eyebrow">Contact</p>

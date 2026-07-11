@@ -31,7 +31,7 @@ export default function CourseDetailPage({ params }) {
   return (
     <>
       <section className="section course-detail-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <Atmosphere typeText="courses" />
+        <Atmosphere monumentalWord="courses" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">
