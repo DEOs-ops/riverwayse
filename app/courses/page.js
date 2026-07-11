@@ -1,7 +1,7 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import PortalCard from "@/components/PortalCard";
-import PageHeroGlow from "@/components/PageHeroGlow";
+import Atmosphere from "@/components/Atmosphere";
 import { COURSES } from "./data";
 
 export const metadata = {
@@ -12,7 +12,7 @@ export default function CoursesPage() {
   return (
     <>
       <section className="section courses-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <PageHeroGlow />
+        <Atmosphere typeText="courses" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">100% Virtual</p>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 const LINKS = [
+  { href: "/audit", label: "DEOS Audit" },
   { href: "/about", label: "About" },
   { href: "/deos", label: "DEOS Framework" },
   { href: "/services", label: "Services" },

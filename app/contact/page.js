@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
-import PageHeroGlow from "@/components/PageHeroGlow";
+import Atmosphere from "@/components/Atmosphere";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", business: "", email: "", message: "", company: "" });
@@ -41,7 +41,7 @@ export default function ContactPage() {
 
   return (
     <section className="section contact" style={{ position: "relative", overflow: "hidden" }}>
-      <PageHeroGlow />
+      <Atmosphere typeText="contact" />
       <div className="container contact-grid" style={{ position: "relative", zIndex: 1 }}>
         <Reveal as="div">
           <p className="eyebrow">Contact</p>

@@ -40,8 +40,8 @@ export default function HomePage() {
             Not a menu of services. An operating system for demand.
           </p>
           <div className="hero-actions hero-actions-center">
-            <Link href="/contact" className="btn btn-primary">
-              Book a free growth audit
+            <Link href="/audit" className="btn btn-primary">
+              Start your free DEOS Audit
             </Link>
             <Link href="/deos" className="btn btn-ghost">
               Explore the DEOS framework

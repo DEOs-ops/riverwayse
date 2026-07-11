@@ -1,6 +1,6 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
-import PageHeroGlow from "@/components/PageHeroGlow";
+import Atmosphere from "@/components/Atmosphere";
 
 export const metadata = {
   title: "Services & Pricing — Riverways",
@@ -78,7 +78,7 @@ export default function ServicesPage() {
   return (
     <>
       <section className="section services-hero" style={{ position: "relative", overflow: "hidden" }}>
-        <PageHeroGlow />
+        <Atmosphere typeText="services" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <p className="eyebrow">Services</p>
