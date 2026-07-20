@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { fireRipple } from "./pageTransitionBus";
 
 const LINKS = [
   { href: "/audit", label: "DEOS Audit" },
@@ -14,21 +16,49 @@ const LINKS = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  // Mirrors PortalCard's passage transition so every primary navigation
+  // path — card click or nav link — gets the same water-ripple veil
+  // instead of only card-initiated navigation getting it.
+  function handleNavClick(e, href) {
+    setOpen(false);
+
+    // Let modifier-key clicks (new tab, new window) and non-left clicks
+    // through untouched — intercepting those breaks expected browser behavior.
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    e.preventDefault();
+    fireRipple(e.clientX, e.clientY);
+    setTimeout(() => router.push(href), 480);
+  }
 
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <Link href="/" className="nav-brand" onClick={() => setOpen(false)} aria-label="Riverways home">
+        <Link
+          href="/"
+          className="nav-brand"
+          onClick={(e) => handleNavClick(e, "/")}
+          aria-label="Riverways home"
+        >
           <img src="/riverways-mark.jpg" alt="Riverways" width="36" height="36" className="nav-mark" />
         </Link>
 
         <nav className={`nav-links ${open ? "is-open" : ""}`}>
           {LINKS.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <Link key={link.href} href={link.href} onClick={(e) => handleNavClick(e, link.href)}>
               {link.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn btn-primary nav-cta" onClick={() => setOpen(false)}>
+          <Link
+            href="/contact"
+            className="btn btn-primary nav-cta"
+            onClick={(e) => handleNavClick(e, "/contact")}
+          >
             Book a growth audit
           </Link>
         </nav>
@@ -80,7 +110,7 @@ export default function Nav() {
           color: var(--ink-300);
         }
         .nav-links a {
-          transition: color 0.2s ease;
+          transition: color var(--dur-response) var(--ease-response);
         }
         .nav-links a:hover {
           color: var(--ink-100);
@@ -121,7 +151,7 @@ export default function Nav() {
             gap: 26px;
             font-size: 20px;
             transform: translateX(100%);
-            transition: transform 0.35s ease;
+            transition: transform var(--dur-standard) var(--ease-arrival);
           }
           .nav-links.is-open {
             transform: translateX(0);

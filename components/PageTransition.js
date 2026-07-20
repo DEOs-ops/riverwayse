@@ -8,6 +8,12 @@ export default function PageTransition() {
 
   useEffect(() => {
     const unsub = subscribeRipple((x, y) => {
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      // Callers (PortalCard, Nav) already skip fireRipple entirely when
+      // motion is reduced, so this is a defensive second guard in case
+      // fireRipple is ever called from somewhere that doesn't check.
+      if (prefersReduced) return;
+
       const id = Date.now() + Math.random();
       setRipples((r) => [...r, { id, x, y }]);
       setTimeout(() => {
@@ -38,7 +44,7 @@ export default function PageTransition() {
           );
           z-index: 9999;
           pointer-events: none;
-          animation: ripple-grow-fade 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          animation: ripple-grow-fade var(--dur-passage) var(--ease-passage) forwards;
         }
         @keyframes ripple-grow-fade {
           0% {

@@ -47,6 +47,21 @@
 
   --container: 1180px;
   --edge: clamp(20px, 6vw, 72px);
+
+  /* Motion system — four tiers, one shared vocabulary.
+     Ambient (canvas/hero background) is time-driven and doesn't use these.
+     Arrival: content entering the viewport (Reveal, CurrentRule) or a page settling in.
+     Response: hover/tap micro-interactions (cards, buttons, nav links).
+     Passage: route changes (the ripple veil). */
+  --ease-arrival: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-response: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-passage: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --dur-instant: 150ms;
+  --dur-response: 250ms;
+  --dur-standard: 400ms;
+  --dur-arrival: 700ms;
+  --dur-passage: 900ms;
 }
 
 * {
@@ -173,7 +188,7 @@ img {
 
 .current-rule.is-visible::after {
   transform: scaleX(1);
-  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1.1s var(--ease-arrival);
 }
 
 .btn {
@@ -187,7 +202,11 @@ img {
   font-weight: 600;
   letter-spacing: 0.01em;
   border: 1px solid transparent;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform var(--dur-response) var(--ease-response),
+    box-shadow var(--dur-response) var(--ease-response),
+    background var(--dur-response) var(--ease-response),
+    border-color var(--dur-response) var(--ease-response);
 }
 
 /* Primary button — the one place on the page allowed to run at full
@@ -210,7 +229,7 @@ img {
   filter: blur(16px);
   opacity: 0.32;
   z-index: -1;
-  transition: opacity 0.35s ease, filter 0.35s ease;
+  transition: opacity var(--dur-response) var(--ease-response), filter var(--dur-response) var(--ease-response);
 }
 
 .btn-primary:hover {
@@ -249,7 +268,10 @@ img {
   border: 1px solid var(--accent-wash);
   border-radius: 18px;
   padding: 32px;
-  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  transition:
+    border-color var(--dur-standard) var(--ease-response),
+    background var(--dur-standard) var(--ease-response),
+    transform var(--dur-standard) var(--ease-response);
 }
 
 .card:hover {
@@ -264,7 +286,7 @@ img {
 .reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--dur-arrival) var(--ease-arrival), transform var(--dur-arrival) var(--ease-arrival);
 }
 
 .reveal.is-visible {
@@ -279,6 +301,50 @@ img {
   }
   .current-rule::after {
     transform: scaleX(1);
+  }
+}
+
+/* Arrival stagger — wraps headline lines/clauses (via the <Arrival>
+   component) so the first paint of a page feels composed rather than
+   dumped on screen. Pair with the passage veil: fires as the ripple
+   clears so type feels like it's arriving with the page, not just
+   sitting there already rendered. Staggers by line, not single words —
+   word-by-word reads as a gimmick against monumental serif type; line
+   cascade reads as editorial pacing. */
+.arrival-item {
+  display: block;
+  opacity: 0;
+  transform: translateY(0.4em);
+  transition: opacity var(--dur-arrival) var(--ease-arrival), transform var(--dur-arrival) var(--ease-arrival);
+}
+
+.arrival-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Main-content passage fade — the fallback arrival layer for navigation
+   that doesn't originate from a PortalCard/nav click (back/forward,
+   direct URL, bookmarks). Those routes never get a pre-navigation veil,
+   so this gives incoming content a soft settle instead of popping in. */
+.main-transition {
+  opacity: 0;
+  transition: opacity var(--dur-arrival) var(--ease-arrival);
+}
+
+.main-transition.is-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrival-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .main-transition {
+    opacity: 1;
+    transition: none;
   }
 }
 

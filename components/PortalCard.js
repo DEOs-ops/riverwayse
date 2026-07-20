@@ -28,15 +28,30 @@ export default function PortalCard({ href, className = "", children, navigate = 
 
   function handleClick(e) {
     if (!href) return;
+
+    // Let modifier-key clicks (new tab, new window) and non-left clicks
+    // through untouched — intercepting those breaks expected browser behavior.
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
     e.preventDefault();
-    fireRipple(e.clientX, e.clientY);
-    setTimeout(() => {
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function go() {
       if (href.startsWith("#")) {
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+        document.querySelector(href)?.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
       } else if (navigate) {
         router.push(href);
       }
-    }, 480);
+    }
+
+    if (prefersReduced) {
+      go();
+      return;
+    }
+
+    fireRipple(e.clientX, e.clientY);
+    setTimeout(go, 480);
   }
 
   return (
@@ -57,7 +72,7 @@ export default function PortalCard({ href, className = "", children, navigate = 
         .portal-card {
           position: relative;
           cursor: ${href ? "pointer" : "default"};
-          transition: transform 180ms ease;
+          transition: transform var(--dur-response) var(--ease-response);
           will-change: transform;
         }
         .portal-card::after {
@@ -72,7 +87,7 @@ export default function PortalCard({ href, className = "", children, navigate = 
             transparent 60%
           );
           opacity: 0;
-          transition: opacity 200ms ease;
+          transition: opacity var(--dur-response) var(--ease-response);
           pointer-events: none;
         }
         .portal-card:hover::after {

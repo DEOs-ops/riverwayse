@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import Arrival from "@/components/Arrival";
 import CurrentRule from "@/components/CurrentRule";
 import LandscapeHero from "@/components/LandscapeHero";
 import PhotoHero from "@/components/PhotoHero";
@@ -31,11 +32,13 @@ export default function HomePage() {
         <div className="container hero-fullbleed-inner">
           <p className="eyebrow">Riverways · Growth Consultancy, Lagos</p>
           <h1 className="hero-title hero-title-center">
-            Growth that moves
-            <br />
-            like a <span className="gradient-text">current</span>,
-            <br />
-            not a splash.
+            <Arrival>
+              <span>Growth that moves</span>
+              <span>
+                like a <span className="gradient-text">current</span>,
+              </span>
+              <span>not a splash.</span>
+            </Arrival>
           </h1>
           <p className="hero-sub hero-sub-center">
             Riverways runs every engagement through DEOS — the Demand Engineering
