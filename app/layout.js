@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import LivingCurrent from "@/components/LivingCurrent";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import PageTransition from "@/components/PageTransition";
+import MainTransition from "@/components/MainTransition";
 
 export const metadata = {
   title: "Riverways — Growth Consultancy, Lagos",
@@ -30,7 +31,9 @@ export default function RootLayout({ children }) {
         <LivingCurrent />
         <div style={{ position: "relative", zIndex: 1 }}>
           <Nav />
-          <main>{children}</main>
+          <main>
+            <MainTransition>{children}</MainTransition>
+          </main>
           <Footer />
         </div>
         <WhatsAppFloat />
